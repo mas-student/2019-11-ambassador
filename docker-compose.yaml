@@ -1,0 +1,30 @@
+version: '3'
+
+services:
+  ambassador:
+    image: nginx
+    volumes:
+     - /home/alexander/CloudStation/softwarearchitect-2019-11/2019-11-second/ambassador/nginx.conf:/etc/nginx/nginx.conf
+    ports:
+     - "8080:80"
+    depends_on:
+     - email-notifier
+     - web-notifier
+
+  email-notifier:
+    build: ./email_notifier/
+    env_file:
+      - default.env
+    expose:
+      - "8080"
+    volumes:
+      - ./email_notifier/:/home/user/email_notifier
+
+  web-notifier:
+    build: ./web_notifier/
+    expose:
+      - "5000"
+    volumes:
+      - ./web_notifier/:/home/user/web_notifier
+    env_file:
+      - default.env
