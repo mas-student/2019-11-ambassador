@@ -4,7 +4,8 @@ services:
   ambassador:
     image: nginx
     volumes:
-     - /home/alexander/CloudStation/softwarearchitect-2019-11/2019-11-second/ambassador/nginx.conf:/etc/nginx/nginx.conf
+#     - /home/alexander/CloudStation/softwarearchitect-2019-11/2019-11-second/ambassador/nginx.conf:/etc/nginx/nginx.conf
+     - ./ambassador/nginx.conf:/etc/nginx/nginx.conf
     ports:
      - "8080:80"
     depends_on:
