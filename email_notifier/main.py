@@ -11,7 +11,10 @@ from unittest.mock import ANY, Mock, patch
 
 from aiohttp import web
 from aiohttp.test_utils import TestClient
-from asyncmock import AsyncMock
+try:
+    from unittest.mock import AsyncMock
+except:
+    from asyncmock import AsyncMock
 from dataclasses_jsonschema import JsonSchemaMixin, ValidationError
 from pytest import fixture
 
